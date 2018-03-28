@@ -1,0 +1,38 @@
+﻿@model IEnumerable<RelatedNodeViewModel>
+
+@{
+    ViewData["Title"] = "Relations";
+}
+
+<h2>Relations</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Node.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr class="@(item.IsRelated ? "is-related": string .Empty)">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Node.Name)
+                    </td>
+                    <td>
+                        <a asp-action="SwitchRelation" 
+                           asp-route-id="@ViewBag.NodeId" 
+                           asp-route-relationId="@item.Node.Id"
+                           asp-route-graphId="@ViewBag.GraphId">Switch</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

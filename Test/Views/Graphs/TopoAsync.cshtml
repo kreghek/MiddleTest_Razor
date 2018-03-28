@@ -1,0 +1,14 @@
+﻿@model Test.BLL.Node[]
+
+@{
+    ViewBag.Title = "Topo";
+    Layout = "_Layout";
+}
+
+<h2>Topo</h2>
+@foreach (var node in Model)
+{
+    <div>
+        @node.Name
+    </div>
+}

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Test.BLL.Node>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create"  asp-route-graphId="@ViewBag.GraphId">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" asp-route-graphId="@ViewBag.GraphId">Edit</a> |
+                        <a asp-action="Relations" asp-route-id="@item.Id" asp-route-graphId="@ViewBag.GraphId">Relations</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" asp-route-graphId="@ViewBag.GraphId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" asp-route-graphId="@ViewBag.GraphId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
